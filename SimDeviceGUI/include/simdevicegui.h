@@ -14,8 +14,12 @@ class SimDeviceGUI : public QMainWindow
 public:
     SimDeviceGUI(QWidget *parent = nullptr);
     ~SimDeviceGUI();
+    void Connections();
+
+public slots:
+    void DoThisWhenButtonClicked();
 
 private:
-    Ui::SimDeviceGUI *ui;
+    Ui::SimDeviceGUI *gui;
 };
 #endif // SIMDEVICEGUI_H
