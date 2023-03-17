@@ -27,6 +27,7 @@ void SimDeviceGUI::StartUpUI()
     // Keep this function, as this will show the UI to the screen.
     // Can also use showMaximised() if you want to see full screen version.. Not recommended.
     show();
+    this->setFixedSize(this->geometry().width(), this->geometry().height());
 
 }
 

@@ -5,6 +5,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    a.setStyle("Fusion");
     SimDeviceGUI w;
     w.StartUpUI(); // This line is changed from w.show() to w.StartUpUI() to preprocess GUI as we want.
     return a.exec();
