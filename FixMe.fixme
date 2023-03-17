@@ -1,0 +1,15 @@
+// This is a file for functions or code blocks
+// that has to be fixed..
+// to maintain a list of things to be fixed and by whom.....
+
+// Syntax: // is comments
+// TN: Task Number
+// TBF: Name of person
+// Brief: What is to be fixed?
+
+// Note: On the cpp or hpp/h file, please leave a comment "// FIXME"
+
+
+TN: 1
+TBF: Soumik
+Brief: Fix the cmake to read .lib files
