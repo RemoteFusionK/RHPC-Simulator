@@ -41,9 +41,18 @@ void SimDeviceGUI::PrepareGraphics()
     // To be completed by Jinwook.
     // Delete these comments when done!
 
+    AddDeviceControllerInList();
     AddDeviceStateValuesInList();
     AddOperationModeValuesInList();
-    AddDeviceControllerInList();
+    AddRoomNamesInList();
+
+    gui->xPos->setValidator(new QIntValidator(0, 9999, this));
+    gui->yPos->setValidator(new QIntValidator(0, 9999, this));
+    gui->zPos->setValidator(new QIntValidator(0, 9999, this));
+
+    gui->guardInactive->setChecked(true);
+    gui->guardActive->setChecked(false);
+    
 
     // Delete this as well.
     std::cout << "Graphics Ready" << std::endl; // Can't have an empty function.....
@@ -52,23 +61,27 @@ void SimDeviceGUI::PrepareGraphics()
 void SimDeviceGUI::AddDeviceControllerInList()
 {
     // Add 32 device controllers: 151 ~ 182
-    gui->deviceController->addItem("151");
-    gui->deviceController->addItem("151");
+    int deviceController = 32;
+    for (int i = 151; i < 151 + deviceController; i++)
+    {        
+        QString tmp = QString::number(i);
+        gui->deviceController->addItem(tmp);
+    }
+}
+
+void SimDeviceGUI::AddRoomNamesInList()
+{
+    QString string = "GALLERY 1, SP1, SP2, SP3, SP4, SP5, SP6, SP7, SP8, SP9, SP10, SP11, SP12, HOT-CELL 1, HOT-CELL 2, HOT-CELL 3, NB CELL 1, NB CELL 2, PORT CELL MOCK-UP, GALLERY 2, In-VV 1, In-VV2, PC 12, PC 15, PC 16, PC 17, LPC 01, LPC 02, LPC 03, DC 01, RESCUE";
+    QStringList rooms = string.split(",");
+
+    gui->roomList->addItems(rooms);
+    
+    // Delete this as well.
+    std::cout << "AddItems to Room List Ready" << std::endl; // Can't have an empty function.....
 }
 
 void SimDeviceGUI::AddDeviceStateValuesInList()
 {
-    // When the GUI layout is ready,
-    // If you have a drop down list (combo box)
-    // called deviceState.
-    // You can do the following: 
-
-    // gui->deviceState->addItem("Off");
-    // gui->deviceState->addItem("Ready");
-    // etc....
-    // To be filled by Jinwook
-    // Delete these comments when done!
-
     gui->deviceState->addItem("SAFE");
     gui->deviceState->addItem("READY");
     gui->deviceState->addItem("ENABLED");

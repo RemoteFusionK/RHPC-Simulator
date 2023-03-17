@@ -29,7 +29,7 @@ public:
     void AddDeviceStateValuesInList();
     void AddOperationModeValuesInList();
     void AddDeviceControllerInList();
-
+    void AddRoomNamesInList();
 
     // Connector Function
     void Connections();

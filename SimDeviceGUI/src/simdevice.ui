@@ -275,7 +275,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QRadioButton" name="guardYes">
+    <widget class="QRadioButton" name="guardActive">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -285,10 +285,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>Yes</string>
+      <string>Active</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="guardNo">
+    <widget class="QRadioButton" name="guardInactive">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -298,7 +298,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>No</string>
+      <string>Inactive</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="networkInterface">
