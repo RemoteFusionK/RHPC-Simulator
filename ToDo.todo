@@ -11,10 +11,8 @@ To Do for Soumik
 - Edit cmake to read .lib files
 - Add common, dependencies and CDN to project.
 - Create json parser and RHPC sim devices database json
-    - 
-    - 
-- (Top level assignment) 
-    - (Level two assignment)
+- Add room name list in database
+
 
 
 

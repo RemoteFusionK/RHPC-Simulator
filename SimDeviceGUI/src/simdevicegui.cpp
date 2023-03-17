@@ -45,15 +45,11 @@ void SimDeviceGUI::PrepareGraphics()
     AddDeviceStateValuesInList();
     AddOperationModeValuesInList();
     AddRoomNamesInList();
+    ValidateRoomPositions();
+    SetInitCheckBoxes();
 
-    gui->xPos->setValidator(new QIntValidator(0, 9999, this));
-    gui->yPos->setValidator(new QIntValidator(0, 9999, this));
-    gui->zPos->setValidator(new QIntValidator(0, 9999, this));
-
-    gui->guardInactive->setChecked(true);
-    gui->guardActive->setChecked(false);
+    // Edit Soumik: Moved your commands from this function to their custom functions...
     
-
     // Delete this as well.
     std::cout << "Graphics Ready" << std::endl; // Can't have an empty function.....
 }
@@ -63,14 +59,17 @@ void SimDeviceGUI::AddDeviceControllerInList()
     // Add 32 device controllers: 151 ~ 182
     int deviceController = 32;
     for (int i = 151; i < 151 + deviceController; i++)
-    {        
-        QString tmp = QString::number(i);
-        gui->deviceController->addItem(tmp);
+    {
+        gui->deviceController->addItem(std::to_string(i).c_str());
     }
 }
 
 void SimDeviceGUI::AddRoomNamesInList()
 {
+    // TODO Soumik: will move this to a txt file instead of a long list.
+    // Related to database
+    // keep as it is for now
+
     QString string = "GALLERY 1, SP1, SP2, SP3, SP4, SP5, SP6, SP7, SP8, SP9, SP10, SP11, SP12, HOT-CELL 1, HOT-CELL 2, HOT-CELL 3, NB CELL 1, NB CELL 2, PORT CELL MOCK-UP, GALLERY 2, In-VV 1, In-VV2, PC 12, PC 15, PC 16, PC 17, LPC 01, LPC 02, LPC 03, DC 01, RESCUE";
     QStringList rooms = string.split(",");
 
@@ -117,6 +116,24 @@ void SimDeviceGUI::Connections()
     // connect(gui->yesButton, SIGNAL(clicked()), this, SLOT(DoThisWhenButtonClicked()));
     connect(gui->newButton, SIGNAL(clicked()), this, SLOT(DoThisWhenButtonClicked()));
 }
+
+
+
+
+void SimDeviceGUI::ValidateRoomPositions()
+{
+    gui->xPos->setValidator(new QIntValidator(0, 9999, this));
+    gui->yPos->setValidator(new QIntValidator(0, 9999, this));
+    gui->zPos->setValidator(new QIntValidator(0, 9999, this));
+}
+
+
+void SimDeviceGUI::SetInitCheckBoxes()
+{
+    gui->guardInactive->setChecked(true);
+    gui->guardActive->setChecked(false);
+}
+
 
 
 

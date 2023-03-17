@@ -26,10 +26,12 @@ public:
     // Startup Functions
     void StartUpUI();
     void PrepareGraphics();
+    void ValidateRoomPositions();
     void AddDeviceStateValuesInList();
     void AddOperationModeValuesInList();
     void AddDeviceControllerInList();
     void AddRoomNamesInList();
+    void SetInitCheckBoxes();
 
     // Connector Function
     void Connections();
@@ -40,4 +42,7 @@ public slots:
 private:
     Ui::SimDeviceGUI *gui;
 };
+
+
+
 #endif // SIMDEVICEGUI_H
