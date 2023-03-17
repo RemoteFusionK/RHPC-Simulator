@@ -74,13 +74,16 @@ SimDeviceGUI::~SimDeviceGUI()
 
 void SimDeviceGUI::Connections()
 {
-    connect(gui->yesButton, SIGNAL(clicked()), this, SLOT(DoThisWhenButtonClicked()));
+    // connect(gui->yesButton, SIGNAL(clicked()), this, SLOT(DoThisWhenButtonClicked()));
+    connect(gui->newButton, SIGNAL(clicked()), this, SLOT(DoThisWhenButtonClicked()));
 }
 
 
 
 void SimDeviceGUI::DoThisWhenButtonClicked()
 {
+    
+    /*
     if (gui->ckBoxSoumik->isChecked())
     {
         gui->ckBoxSoumik->setChecked(false);
@@ -88,5 +91,5 @@ void SimDeviceGUI::DoThisWhenButtonClicked()
     else
     {
         gui->ckBoxSoumik->setChecked(true);
-    }
+    }*/
 }
