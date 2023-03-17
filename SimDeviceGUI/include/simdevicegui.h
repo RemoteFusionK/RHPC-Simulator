@@ -1,7 +1,15 @@
+/**
+* \file SimDeviceGUI.h
+* \brief Main UI class
+* \author Jinwook Kim, Soumik Sarkar @ ITER Organization
+*/
+
+
 #ifndef SIMDEVICEGUI_H
 #define SIMDEVICEGUI_H
 
-#include <QMainWindow>
+#include <qtHeaders.hpp>
+#include <cppHeaders.hpp>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class SimDeviceGUI; }
@@ -14,6 +22,14 @@ class SimDeviceGUI : public QMainWindow
 public:
     SimDeviceGUI(QWidget *parent = nullptr);
     ~SimDeviceGUI();
+
+    // Startup Functions
+    void StartUpUI();
+    void PrepareGraphics();
+    void AddDeviceStateValuesInList();
+
+
+    // Connector Function
     void Connections();
 
 public slots:
