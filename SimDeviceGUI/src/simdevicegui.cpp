@@ -41,12 +41,20 @@ void SimDeviceGUI::PrepareGraphics()
     // To be completed by Jinwook.
     // Delete these comments when done!
 
-
+    AddDeviceStateValuesInList();
+    AddOperationModeValuesInList();
+    AddDeviceControllerInList();
 
     // Delete this as well.
     std::cout << "Graphics Ready" << std::endl; // Can't have an empty function.....
 }
 
+void SimDeviceGUI::AddDeviceControllerInList()
+{
+    // Add 32 device controllers: 151 ~ 182
+    gui->deviceController->addItem("151");
+    gui->deviceController->addItem("151");
+}
 
 void SimDeviceGUI::AddDeviceStateValuesInList()
 {
@@ -61,7 +69,25 @@ void SimDeviceGUI::AddDeviceStateValuesInList()
     // To be filled by Jinwook
     // Delete these comments when done!
 
+    gui->deviceState->addItem("SAFE");
+    gui->deviceState->addItem("READY");
+    gui->deviceState->addItem("ENABLED");
+    gui->deviceState->addItem("OFF");
 
+    // Delete this as well.
+    std::cout << "AddItems to DeviceState Ready" << std::endl; // Can't have an empty function.....
+}
+
+void SimDeviceGUI::AddOperationModeValuesInList()
+{
+    gui->operationMode->addItem("IDLE");
+    gui->operationMode->addItem("NOMINAL");
+    gui->operationMode->addItem("RESCUE");
+    gui->operationMode->addItem("RECOVERY");
+    gui->operationMode->addItem("MAINTENANCE");
+    gui->operationMode->addItem("HANDS ON");
+    gui->operationMode->addItem("COMMISSIONING");
+    gui->operationMode->addItem("OFF");
 
     // Delete this as well.
     std::cout << "AddItems to DeviceState Ready" << std::endl; // Can't have an empty function.....
@@ -83,7 +109,8 @@ void SimDeviceGUI::Connections()
 
 void SimDeviceGUI::DoThisWhenButtonClicked()
 {
-    
+
+    gui->deviceTable->setDisabled(true);
     /*
     if (gui->ckBoxSoumik->isChecked())
     {

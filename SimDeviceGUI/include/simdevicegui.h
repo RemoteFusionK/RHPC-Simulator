@@ -27,6 +27,8 @@ public:
     void StartUpUI();
     void PrepareGraphics();
     void AddDeviceStateValuesInList();
+    void AddOperationModeValuesInList();
+    void AddDeviceControllerInList();
 
 
     // Connector Function
