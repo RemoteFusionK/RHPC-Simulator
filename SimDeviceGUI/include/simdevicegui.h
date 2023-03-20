@@ -11,6 +11,7 @@
 #include <qtHeaders.hpp>
 #include <cppHeaders.hpp>
 
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class SimDeviceGUI; }
 QT_END_NAMESPACE
