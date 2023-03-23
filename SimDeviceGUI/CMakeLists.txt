@@ -11,6 +11,7 @@ file(GLOB_RECURSE SimDeviceGUI_SOURCES "src/*.cpp" "src/*.ui") # Source consists
 # If the source folder does not have a .ui file, please remove "src/*.ui" or it will give an error in compilation!
 file(GLOB_RECURSE SimDeviceGUI_HEADERS "include/*.h" "include/*.hpp") # Include consists of all .h files
 set(ROOT "${PROJECT_SOURCE_DIR}") # Keep as it is
+file(GLOB_RECURSE SimDeviceGUI_RESOURCES "src/*.rc")
 source_group(TREE ${ROOT} FILES ${SimDeviceGUI_SOURCES} ${SimDeviceGUI_HEADERS} ${SimDeviceGUI_RESOURCES})
 # source group function will group all the files in a sub branch of the project tree for Qt or VS and finally for compilation.
 
@@ -33,6 +34,8 @@ ELSE()
 	set(CMAKE_AUTOMOC ON)
 ENDIF()
 #-----------------------------
+
+set(ICON_PATH "src/RHPC_simdevice.ico")
 
 
 # Keep as it is from below this line! Except at lines 62,65-76 update with installed version of Qt 
@@ -96,20 +99,7 @@ create_target_launcher(${PROJECT_NAME} RUNTIME_LIBRARY_DIRS "${QT_DIR}/bin"
                                                             "${QT_DIR}/plugins/platforms"
                                                             "${CMAKE_CURRENT_BINARY_DIR}/../bin/Debug"
                                                             WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-                                                            FLAVOR "Debug")
-Message (STATUS "creating launchers for Release Flavour")
-create_target_launcher(${PROJECT_NAME} RUNTIME_LIBRARY_DIRS "${QT_DIR}/bin"
-                                                            "${QT_DIR}/plugins/platforms"
-                                                            "${CMAKE_CURRENT_BINARY_DIR}/../bin/Release"
-                                                            WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-                                                            FLAVOR "Release")
-Message (STATUS "creating launchers for RelWithDebInfo Flavour")
-create_target_launcher(${PROJECT_NAME} RUNTIME_LIBRARY_DIRS "${QT_DIR}/bin"
-                                                            "${QT_DIR}/plugins/platforms"
-                                                            "${CMAKE_CURRENT_BINARY_DIR}/../bin/RelWithDebInfo"
-                                                           WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-                                                            FLAVOR "RelWithDebInfo")															
- 
+                                                            )
 ELSE()
 
 Message(STATUS "No available launchers for QT_DEBUG mode")

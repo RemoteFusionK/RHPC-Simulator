@@ -33,6 +33,8 @@ void SimDeviceGUI::StartUpUI()
 
 void SimDeviceGUI::PrepareGraphics()
 {
+    ShowIcon();
+
     // Prepare some specific graphics for example add column header names for the device status table.
     // add list members to the several drop down lists we will add in the table.
     // These include graphic objects or data, which do not change throughout the execution.
@@ -63,6 +65,17 @@ void SimDeviceGUI::AddDeviceControllerInList()
         gui->deviceController->addItem(std::to_string(i).c_str());
     }
 }
+
+
+
+void SimDeviceGUI::ShowIcon()
+{
+    QPixmap pix("RHPC_simdevice.png");
+    pix = pix.scaled(gui->iconLabel->size(), Qt::KeepAspectRatioByExpanding);
+    gui->iconLabel->setPixmap(pix);
+}
+
+
 
 void SimDeviceGUI::AddRoomNamesInList()
 {

@@ -33,6 +33,7 @@ public:
     void AddDeviceControllerInList();
     void AddRoomNamesInList();
     void SetInitCheckBoxes();
+    void ShowIcon();
 
     // Connector Function
     void Connections();
