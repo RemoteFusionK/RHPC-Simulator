@@ -39,7 +39,11 @@ public:
     void Connections();
 
 public slots:
-    void DoThisWhenButtonClicked();
+    void RunButtonClicked();
+    void StopButtonClicked();
+    void NewButtonClicked();
+    void SaveButtonClicked();
+    void LoadButtonClicked();
 
 private:
     Ui::SimDeviceGUI *gui;

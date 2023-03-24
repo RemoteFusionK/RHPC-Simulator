@@ -56,6 +56,13 @@ void SimDeviceGUI::PrepareGraphics()
     std::cout << "Graphics Ready" << std::endl; // Can't have an empty function.....
 }
 
+void SimDeviceGUI::ShowIcon()
+{
+    QPixmap pix("RHPC_simdevice.png");
+    pix = pix.scaled(gui->iconLabel->size(), Qt::KeepAspectRatioByExpanding);
+    gui->iconLabel->setPixmap(pix);
+}
+
 void SimDeviceGUI::AddDeviceControllerInList()
 {
     // Add 32 device controllers: 151 ~ 182
@@ -64,15 +71,6 @@ void SimDeviceGUI::AddDeviceControllerInList()
     {
         gui->deviceController->addItem(std::to_string(i).c_str());
     }
-}
-
-
-
-void SimDeviceGUI::ShowIcon()
-{
-    QPixmap pix("RHPC_simdevice.png");
-    pix = pix.scaled(gui->iconLabel->size(), Qt::KeepAspectRatioByExpanding);
-    gui->iconLabel->setPixmap(pix);
 }
 
 
@@ -127,7 +125,11 @@ SimDeviceGUI::~SimDeviceGUI()
 void SimDeviceGUI::Connections()
 {
     // connect(gui->yesButton, SIGNAL(clicked()), this, SLOT(DoThisWhenButtonClicked()));
-    connect(gui->newButton, SIGNAL(clicked()), this, SLOT(DoThisWhenButtonClicked()));
+    connect(gui->newButton, SIGNAL(clicked()), this, SLOT(NewButtonClicked()));
+    connect(gui->saveButton, SIGNAL(clicked()), this, SLOT(SaveButtonClicked()));
+    connect(gui->loadButton, SIGNAL(clicked()), this, SLOT(LoadButtonClicked()));
+    connect(gui->runButton, SIGNAL(clicked()), this, SLOT(RunButtonClicked()));
+    connect(gui->stopButton, SIGNAL(clicked()), this, SLOT(StopButtonClicked()));
 }
 
 
@@ -135,6 +137,7 @@ void SimDeviceGUI::Connections()
 
 void SimDeviceGUI::ValidateRoomPositions()
 {
+    // Need to confine the maximum values
     gui->xPos->setValidator(new QIntValidator(0, 9999, this));
     gui->yPos->setValidator(new QIntValidator(0, 9999, this));
     gui->zPos->setValidator(new QIntValidator(0, 9999, this));
@@ -145,22 +148,49 @@ void SimDeviceGUI::SetInitCheckBoxes()
 {
     gui->guardInactive->setChecked(true);
     gui->guardActive->setChecked(false);
+    
+    // code for deviceTable
+    QStringList horzHeaders;
+    horzHeaders << "ID" << "Room" << "State" << "Op. Mode" << "Guard";
+    gui->deviceTable->setRowCount(1);
+    gui->deviceTable->setColumnCount(5);
+    gui->deviceTable->setHorizontalHeaderLabels(horzHeaders);
 }
 
 
-
-
-void SimDeviceGUI::DoThisWhenButtonClicked()
+void SimDeviceGUI::NewButtonClicked()
 {
-
-    gui->deviceTable->setDisabled(true);
-    /*
-    if (gui->ckBoxSoumik->isChecked())
-    {
-        gui->ckBoxSoumik->setChecked(false);
-    }
-    else
-    {
-        gui->ckBoxSoumik->setChecked(true);
-    }*/
+    // test code
+    gui->deviceTable->setDisabled(false);
 }
+
+void SimDeviceGUI::SaveButtonClicked()
+{
+    // test code
+    gui->deviceTable->setDisabled(true);
+}
+
+void SimDeviceGUI::LoadButtonClicked()
+{
+    // test code
+    gui->deviceTable->setDisabled(false);
+}
+
+void SimDeviceGUI::RunButtonClicked()
+{
+    // test code
+   // gui->deviceTable->setDisabled(false);
+    gui->deviceTable->setItem(0, 0, new QTableWidgetItem("Soumik"));
+    gui->deviceTable->setItem(0, 1, new QTableWidgetItem("B56/108"));
+    gui->deviceTable->setItem(0, 2, new QTableWidgetItem("ENABLED"));
+    gui->deviceTable->setItem(0, 3, new QTableWidgetItem("NOMINAL"));
+    gui->deviceTable->setItem(0, 4, new QTableWidgetItem("PPE"));
+    gui->deviceTable->setStyleSheet("QTableView::item:focus{border: 1px solid red;}");
+}
+
+void SimDeviceGUI::StopButtonClicked()
+{
+    // test code
+    gui->deviceTable->setDisabled(true);
+}
+
